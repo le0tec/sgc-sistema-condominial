@@ -1,0 +1,45 @@
+.header {
+  background: white;
+
+  padding: 20px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid #eee;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-left h1 {
+  font-size: 28px;
+  color: #0f2f81;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-user svg {
+  color: #0f2f81;
+}
+
+.header-user strong {
+  display: block;
+  font-size: 15px;
+}
+
+.header-user p {
+  color: gray;
+  font-size: 13px;
+  margin-top: 3px;
+}

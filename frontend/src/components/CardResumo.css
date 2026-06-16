@@ -1,0 +1,14 @@
+.card-resumo {
+  background: white;
+  width: 250px;
+  padding: 25px;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+.icone-card {
+  font-size: 40px;
+}
