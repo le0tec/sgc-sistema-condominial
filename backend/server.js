@@ -56,9 +56,7 @@ app.use("/api/financeiro", financeiroRoutes);
 // ====================
 
 app.get("/", (req, res) => {
-  res.json({
-    mensagem: "API SGC funcionando!",
-  });
+  res.send("TESTE SGC 2026");
 });
 
 // ====================
