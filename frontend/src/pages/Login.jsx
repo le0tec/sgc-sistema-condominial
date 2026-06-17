@@ -2,38 +2,25 @@ import "./Login.css";
 import logo from "../assets/logo-sgc.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import api from "../services/api";
 
 function Login() {
   const navigate = useNavigate();
 
-const [email, setEmail] = useState("admin@sgc.com");
-const [senha, setSenha] = useState("123456");
+  const [email, setEmail] = useState("admin@sgc.com");
+  const [senha, setSenha] = useState("123456");
   const [erro, setErro] = useState("");
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const resposta = await fetch(
-        "http://localhost:5000/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            senha,
-          }),
-        }
-      );
+      const resposta = await api.post("/auth/login", {
+        email,
+        senha,
+      });
 
-      const dados = await resposta.json();
-
-      if (!resposta.ok) {
-        setErro(dados.mensagem || "Erro ao fazer login");
-        return;
-      }
+      const dados = resposta.data;
 
       localStorage.setItem("token", dados.token);
 
@@ -44,7 +31,10 @@ const [senha, setSenha] = useState("123456");
 
       navigate("/dashboard");
     } catch (error) {
-      setErro("Erro ao conectar ao servidor");
+      setErro(
+        error.response?.data?.mensagem ||
+          "Erro ao conectar ao servidor"
+      );
     }
   };
 
